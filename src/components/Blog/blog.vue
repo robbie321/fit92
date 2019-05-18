@@ -1,34 +1,32 @@
 <template>
-<v-container>
+  <v-container>
+    <v-layout row wrap>
+      <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
+        <v-btn v-if="userIsAuthenticated" class="primary" :to="{name: 'post'}">New Blog</v-btn>
+      </v-flex>
+    </v-layout>
     <v-layout row wrap v-for="blog in filteredBlogs" :key="blog.id" class="singleBlog">
-    <v-flex  xs12 sm10 md8 offset-sm1 offset-md2>
-      <v-card color="grey lighten-2" hover  >
-        <v-container fluid>
-          <v-layout row>
-            <v-flex xs5 sm4 md3>
-              <v-card-title primary-title>
-                  <router-link v-bind:to ="'/blog/'+blog.id"><h3><b>{{blog.title | toUppercase}}</b></h3></router-link>
-              </v-card-title>
-              <v-flex>
-                <article>{{blog.content | snippet}}</article>
-                  <!-- <v-btn v-if="userIsAuthenticated" v-on:click="removeBlog(blog.id)" class="deleteButton error">Delete</v-btn> -->
+      <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
+        <v-card class="card-image" v-bind:to="'/blog/'+blog.id" color="white" hover>
+          <v-img :src="blog.image"></v-img>
+          <v-card-title primary-title class="justify-center heading">
+            <b>{{blog.title | toUppercase}}</b>
+          </v-card-title>
+          <v-container fluid>
+            <v-layout row>
+              <v-flex xs12 sm12 md12>
+                <p>{{blog.content | snippet}}</p>
+                <v-card-actions>
+                  <!-- <v-btn color="error">Remove</v-btn> -->
+                </v-card-actions>
               </v-flex>
-              <v-card-actions>
-
-              </v-card-actions>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-card>
-    </v-flex>
-  </v-layout>
-     <v-layout row wrap>
-    <v-flex  xs12 sm10 md8 offset-sm1 offset-md2>
-         <v-btn v-if="userIsAuthenticated" class="primary" :to="{name: 'post'}">New Blog</v-btn>
-    </v-flex>
-  </v-layout>
-</v-container>
-    <!-- <div>
+            </v-layout>
+          </v-container>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
+  <!-- <div>
         <h3 class="headings">Blogger Malone</h3>
         <div class="row">
             <div class="col-6 col-md-2"></div>
@@ -44,12 +42,12 @@
               <router-link v-bind:to ="'/blog/'+blog.id"><h3><b>{{blog.title | toUppercase}}</b></h3></router-link>
               <article>{{blog.content | snippet}}</article>
               <v-btn v-if="userIsAuthenticated" v-on:click="removeBlog(blog.id)" class="deleteButton error">Delete</v-btn>
-              
+
           </div>
              <v-btn v-if="userIsAuthenticated" class="primary" :to="{name: 'post'}">New Post</v-btn>
-         
+
         </div>
-    </div> -->
+  </div>-->
 </template>
 <script>
 export default {
@@ -61,54 +59,63 @@ export default {
     };
   },
   methods: {
-    removeBlog(id){
-      
-      return this.$store.dispatch('deleteBlog', {id:this.id})
-      console.log(id + " Blog Removed");
-    }
+    removeBlog(id) {
+      return this.$store.dispatch('deleteBlog', { id: this.id });
+      console.log(`${id} Blog Removed`);
+    },
   },
 
   computed: {
-    blogs(){
-      return this.$store.getters.loadedBlogs
+    blogs() {
+      return this.$store.getters.loadedBlogs;
     },
     filteredBlogs() {
       return this.blogs.filter(blog => blog.title.match(this.search));
     },
-    userIsAuthenticated(){
-      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-    }
+    userIsAuthenticated() {
+      return (
+        this.$store.getters.user !== null
+        && this.$store.getters.user !== undefined
+      );
+    },
   },
 };
 </script>
 <style>
-#showBlogs{
-    max-width: 800px;
-    margin: 0 auto;
-    text-decoration: none;
+#showBlogs {
+  max-width: 800px;
+  margin: 0 auto;
+  text-decoration: none;
 }
-.singleBlog{
-    padding: 20px;
-    margin: 20px 0;
-    box-sizing: border-box;
+.singleBlog {
+  padding: 20px;
+  margin: 20px 0;
+  box-sizing: border-box;
 }
-.deleteButton{
+.card-image {
+  /* background-image: url("https://cdn2.hubspot.net/hubfs/658892/Blog%20Title%20%20%283%29.png"); */
+}
+.deleteButton {
   margin: 0 auto;
   margin-left: 120px;
 }
 @media screen and (min-width: 480px) {
-  .deleteButton{
+  .deleteButton {
     margin-left: 650px;
   }
 }
-h3{
+h3 {
   color: black;
   text-decoration: none;
 }
-h3:hover{
-  color:azure;
+h3:hover {
+  color: azure;
 }
-a:-webkit-any-link{
+a:-webkit-any-link {
   text-decoration: none;
-} 
+}
+.heading {
+  font-size: 20px;
+  color: black;
+}
 </style>

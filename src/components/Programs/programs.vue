@@ -1,52 +1,63 @@
 <template>
-<v-container>
-  <v-layout row wrap v-for="program in programs" :key="program.id" class="singleBlog">
-    <v-flex  xs12 sm10 md8 offset-sm1 offset-md2>
-      <v-card color="grey lighten-2" hover >
-        <v-container fluid>
-          <v-layout row>
-            <v-flex xs5 sm4 md3>
-              <v-card-title primary-title>
-                <div>
-                  <h4 class="black--text" mb-0>{{program.title}}</h4>
-                </div>
-              </v-card-title>
-              
-              <v-card-actions>
-                  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-
-                  <!-- Identify your business so that you can collect the payments. -->
-                  <input type="hidden" name="business" value="darran.blacky@gmail.com">
-                
-                  <!-- Specify a Buy Now button. -->
-                  <input type="hidden" name="cmd" value="_xclick">
-                
-                  <!-- Specify details about the item that buyers will purchase. -->
-                  <input type="hidden" name="item_name" value="4 Week Nutrtion Plan">
-                  <input type="hidden" name="amount" v-bind:value="program.price">
-                  <input type="hidden" name="currency_code" value="EUR">
-                
-                  <!-- Display the payment button. -->
-                  <input type="image" name="submit" border="0"
-                  src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/buy-logo-medium.png"
-                  alt="Buy Now">
-                  <img alt="" border="0" width="1" height="1"
-                  src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-                
-                </form>
-              </v-card-actions>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-card>
-    </v-flex>
-  </v-layout>
-  <v-layout row wrap>
-    <v-flex  xs12 sm10 md8 offset-sm1 offset-md2>
-         <v-btn left v-if="userIsAuthenticated" class="primary" :to="{name: 'programpost'}">New Program</v-btn>
-    </v-flex>
-  </v-layout>
-</v-container>
+  <div>
+    <v-jumbotron class="image" dark>
+      <v-container fill-height>
+        <v-layout align-center>
+          <v-flex text-xs-center>
+            <h1 class="jumboText">MEAL PLANS AND PROGRAMS</h1>
+            <!-- <hr> -->
+            <!-- <v-btn color="green" large>START NOW</v-btn> -->
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-jumbotron>
+    <v-container>
+      <v-layout row wrap>
+        <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
+          <v-btn
+            left
+            v-if="userIsAuthenticated"
+            class="primary"
+            :to="{name: 'programpost'}"
+          >New Program</v-btn>
+        </v-flex>
+      </v-layout>
+      <v-layout justify-center row wrap class="singleBlog">
+        <v-flex xs12 sm10 md4 v-for="program in programs" :key="program.id">
+          <v-card class="cardMargin elevation-3" flat color="white lighten-4" hover>
+            <!-- <v-btn
+            fab
+            small
+            v-if="userIsAuthenticated"
+            v-on:click="remove(program.id)"
+            class="deleteButton error"
+            >X</v-btn>-->
+            <v-container fluid>
+              <v-layout row>
+                <v-flex xs12 sm md12>
+                  <!-- <v-img height="300px" :src="program.image"></v-img> -->
+                  <v-card-title class="align" primary-title>
+                    <div>
+                      <h2 class="black--text" mb-0>{{program.title}}</h2>
+                    </div>
+                  </v-card-title>
+                  <hr>
+                  <p style="margin-top:20px" align="center">{{program.content}}</p>
+                  <v-card-actions class="align">
+                    <v-btn
+                      v-bind:to="'/programs/'+program.id"
+                      style="margin-right: 10px"
+                      color="red"
+                      class="white--text"
+                    >START NOW</v-btn>
+                  </v-card-actions>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
     <!-- <div>
         <h3 class="headings">Programs</h3>
 
@@ -58,16 +69,15 @@
               <router-link v-bind:to ="'/programs/'+programs.id"><h3><b>{{program.title | toUppercase}}</b></h3></router-link>
               <article>{{program.content | snippet}}</article>
               <v-btn v-if="userIsAuthenticated" v-on:click="removeBlog(blog.id)" class="deleteButton error">Delete</v-btn>
-              
+
           </div>
              <v-btn v-if="userIsAuthenticated" class="primary" :to="{name: 'programpost'}">New Program</v-btn>
-         
+
         </div>
-    </div> -->
+    </div>-->
+  </div>
 </template>
 <script>
-
-
 export default {
   data() {
     return {
@@ -77,11 +87,10 @@ export default {
     };
   },
   methods: {
-    // removeBlog(id){
-      
-    //   return this.$store.dispatch('deleteBlog', {id:this.id})
-    //   console.log(id + " Blog Removed");
-    // }
+    remove(id) {
+      return this.$store.dispatch('deleteProgram', id);
+      console.log(`${id} Program Removed`);
+    },
   },
   // created() {
   //   this.$http.get('https://tournament-website.firebaseio.com/posts.json').then(data => data.json()).then(function (data) {
@@ -96,45 +105,81 @@ export default {
   //   });
   // },
   computed: {
-    programs(){
-      return this.$store.getters.loadedPrograms
+    programs() {
+      return this.$store.getters.loadedPrograms;
     },
-    userIsAuthenticated(){
-      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-    }
+    userIsAuthenticated() {
+      return (
+        this.$store.getters.user !== null
+        && this.$store.getters.user !== undefined
+      );
+    },
   },
 };
 </script>
 <style>
-#showBlogs{
-    max-width: 800px;
-    margin: 0 auto;
-    text-decoration: none;
+.align {
+  justify-content: center;
+  align-content: center;
 }
-.singleBlog{
-    padding: 20px;
-    margin: 20px 0;
-    box-sizing: border-box;
-    /* background: #eee; */
+@media screen and (min-width: 800px) {
+  .cardMargin {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    border-radius: 20px;
+  }
 }
-.deleteButton{
+@media screen and (max-width: 700px) {
+  .cardMargin {
+    margin-bottom: 10px;
+    border-radius: 20px;
+  }
+}
+.singleBlog {
+  padding: 20px;
+  margin: 20px 0;
+  box-sizing: border-box;
+  /* background: #eee; */
+}
+.deleteButton {
   margin: 0 auto;
   margin-left: 250px;
   /* text-align: right; */
 }
 @media screen and (min-width: 480px) {
-  .deleteButton{
+  .deleteButton {
     margin-left: 650px;
   }
 }
-h4{
+h4 {
   color: black;
   text-decoration: none;
 }
-a:-webkit-any-link{
+h2 {
+  font-size: 32px;
+}
+a:-webkit-any-link {
   text-decoration: none;
-} 
+}
 
+.topHeading {
+  font-size: 50px;
+  letter-spacing: 5px;
+}
 
-
+.image {
+  background-image: url("https://www.essentiallysports.com/wp-content/uploads/2-1.jpg");
+  background-size: cover;
+  /* Sets black overlay on image */
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+}
+hr {
+  border: 2px solid #4e798f;
+  border-radius: 5px;
+  width: 55%;
+  margin: auto;
+}
+.jumboText {
+  font-size: 58px;
+}
 </style>

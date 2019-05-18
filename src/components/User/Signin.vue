@@ -50,41 +50,41 @@
 </template>
 <script>
 export default {
-    data(){
-        return{
-            email:'',
-            password: '',
-            // gamertag: ''
-        }
+  data() {
+    return {
+      email: '',
+      password: '',
+      // gamertag: ''
+    };
+  },
+  computed: {
+    user() {
+      return this.$store.getters.user;
     },
-    computed:{
-        user(){
-            return this.$store.getters.user
-        },
-        error(){
-            return this.$store.getters.error
-        },
-        loading(){
-            return this.$store.getters.loading
-        }
+    error() {
+      return this.$store.getters.error;
     },
-    watch:{
-        user(value){
-            if(value != null && value !== undefined){
-                this.$router.push('/')
-            }
-        }
+    loading() {
+      return this.$store.getters.loading;
     },
-    methods:{
-        OnSignIn(){
-            //Vuex
-            this.$store.dispatch('signUserIn', {email:this.email,  password: this.password})
-            // console.log({email: this.email, password: this.password, confirmPassword: this.confirmPassword, gamerTag:this.gamerTag})
-        },
-      onDismissed(){
-            console.log('Dismissed Alert!')
-            this.$store.dispatch('clearError')
-        }
-    }
-}
+  },
+  watch: {
+    user(value) {
+      if (value != null && value !== undefined) {
+        this.$router.push('/');
+      }
+    },
+  },
+  methods: {
+    OnSignIn() {
+      // Vuex
+      this.$store.dispatch('signUserIn', { email: this.email, password: this.password });
+      // console.log({email: this.email, password: this.password, confirmPassword: this.confirmPassword, gamerTag:this.gamerTag})
+    },
+    onDismissed() {
+      console.log('Dismissed Alert!');
+      this.$store.dispatch('clearError');
+    },
+  },
+};
 </script>
