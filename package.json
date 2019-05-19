@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "connect-history-api-fallback": "^1.6.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "firebase": "^5.8.6",

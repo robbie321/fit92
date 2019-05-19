@@ -8,7 +8,7 @@
 module.exports = {
   attributes: {
     amount: {
-      type: 'integer',
+      type: 'number',
     },
     email: {
       type: 'string',

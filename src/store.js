@@ -126,9 +126,6 @@ export default new Vuex.Store({
           for (const key in obj) {
             clients.push({
               id: key,
-              // payment:{
-              //   first_name:
-              // }
               name: `${obj[key].payment.first_name} ${obj[key].payment.last_name}`,
               email: obj[key].payment.email,
               // title: obj[key].title
