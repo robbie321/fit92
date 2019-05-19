@@ -18,8 +18,8 @@ export default {
   data() {
     return {
       error: false,
-      success: false,
-      title: ""
+      success: false
+      // title: '',
     };
   },
   methods: {

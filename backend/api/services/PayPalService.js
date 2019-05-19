@@ -38,7 +38,6 @@ module.exports = {
         payment.email = paymentLog.payer.payer_info.email;
         payment.first_name = paymentLog.payer.payer_info.first_name;
         payment.last_name = paymentLog.payer.payer_info.last_name;
-        payment.title = payment.title;
         ref.push({ payment });
         console.log(payment);
         console.log(JSON.stringify(payment));

@@ -127,7 +127,7 @@ export default new Vuex.Store({
               id: key,
               name: `${obj[key].payment.first_name} ${obj[key].payment.last_name}`,
               email: obj[key].payment.email,
-              title: obj[key].title
+              title: obj[key].payment.title
             });
           }
           console.log(clients);
