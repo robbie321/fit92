@@ -18,20 +18,20 @@
     </ul>
   </div>-->
 </template>
-<script>
+<script scoped>
 export default {
   data() {
     return {
       id: this.$route.params.id,
-      blog: {},
+      blog: {}
     };
   },
 
   computed: {
     Ablog() {
       return this.$store.getters.loadedBlog(this.id);
-    },
-  },
+    }
+  }
 };
 </script>
 <style>

@@ -19,7 +19,6 @@ export default {
     return {
       error: false,
       success: false
-      // title: '',
     };
   },
   methods: {
@@ -75,6 +74,13 @@ export default {
     };
     paypal.Button.render(
       {
+        style: {
+          color: "blue",
+          shape: "pill",
+          label: "pay",
+          tagline: "true",
+          size: "medium"
+        },
         env: "sandbox", // sandbox | production
         commit: true,
 

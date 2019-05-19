@@ -54,15 +54,15 @@ export default {
   data() {
     return {
       // blogs: [],
-      id: '',
-      search: '',
+      id: "",
+      search: ""
     };
   },
   methods: {
     removeBlog(id) {
-      return this.$store.dispatch('deleteBlog', { id: this.id });
+      return this.$store.dispatch("deleteBlog", { id: this.id });
       console.log(`${id} Blog Removed`);
-    },
+    }
   },
 
   computed: {
@@ -74,14 +74,14 @@ export default {
     },
     userIsAuthenticated() {
       return (
-        this.$store.getters.user !== null
-        && this.$store.getters.user !== undefined
+        this.$store.getters.user !== null &&
+        this.$store.getters.user !== undefined
       );
-    },
-  },
+    }
+  }
 };
 </script>
-<style>
+<style scoped>
 #showBlogs {
   max-width: 800px;
   margin: 0 auto;
