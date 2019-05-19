@@ -18,7 +18,8 @@ export default {
   data() {
     return {
       error: false,
-      success: false
+      success: false,
+      title: ""
     };
   },
   methods: {

@@ -1,7 +1,7 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import * as firebase from 'firebase';
-import { stat } from 'fs';
+import Vue from "vue";
+import Vuex from "vuex";
+import * as firebase from "firebase";
+import { stat } from "fs";
 
 Vue.use(Vuex);
 
@@ -10,15 +10,15 @@ export default new Vuex.Store({
     loadedBlogs: [],
     loadedPrograms: [
       {
-        title: 'Test',
-        content: 'Testing',
-        price: '10:00',
-      },
+        title: "Test",
+        content: "Testing",
+        price: "10:00"
+      }
     ],
     loadedClients: [],
     user: null,
     loading: false,
-    error: null,
+    error: null
   },
   // CHANGES STATE
   mutations: {
@@ -42,34 +42,34 @@ export default new Vuex.Store({
     },
     setLoadedClients(state, payload) {
       state.loadedClients = payload;
-    },
+    }
   },
   actions: {
     signUserIn({ commit }, payload) {
-      commit('setLoading', true);
-      commit('clearError');
+      commit("setLoading", true);
+      commit("clearError");
       firebase
         .auth()
         .signInWithEmailAndPassword(payload.email, payload.password)
-        .then((user) => {
-          commit('setLoading', false);
+        .then(user => {
+          commit("setLoading", false);
           const newUser = {
-            id: user.user.uid,
+            id: user.user.uid
           };
-          commit('setUser', newUser);
+          commit("setUser", newUser);
         })
-        .catch((error) => {
-          commit('setLoading', false);
-          commit('setError', error);
+        .catch(error => {
+          commit("setLoading", false);
+          commit("setError", error);
           console.log(error);
         });
     },
     loadBlogs({ commit }) {
       firebase
         .database()
-        .ref('posts')
-        .once('value')
-        .then((data) => {
+        .ref("posts")
+        .once("value")
+        .then(data => {
           const posts = [];
           const obj = data.val();
           for (const key in obj) {
@@ -79,21 +79,21 @@ export default new Vuex.Store({
               category: obj[key].category,
               content: obj[key].content,
               title: obj[key].title,
-              image: obj[key].image,
+              image: obj[key].image
             });
           }
-          commit('setLoadedBlogs', posts);
+          commit("setLoadedBlogs", posts);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
     loadPrograms({ commit }) {
       firebase
         .database()
-        .ref('programs')
-        .once('value')
-        .then((data) => {
+        .ref("programs")
+        .once("value")
+        .then(data => {
           const programs = [];
           const obj = data.val();
           for (const key in obj) {
@@ -103,23 +103,22 @@ export default new Vuex.Store({
               content: obj[key].content,
               title: obj[key].title,
               price: obj[key].price,
-              image: obj[key].image,
+              image: obj[key].image
             });
           }
-          commit('setLoadedPrograms', programs);
+          commit("setLoadedPrograms", programs);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
     loadClients({ commit }) {
-      const id = '';
+      const id = "";
       firebase
         .database()
-        .ref('clients')
-        // .on("child_added")
-        .once('value')
-        .then((data) => {
+        .ref("clients")
+        .once("value")
+        .then(data => {
           const clients = [];
           const obj = data.val();
           console.log(obj);
@@ -128,13 +127,13 @@ export default new Vuex.Store({
               id: key,
               name: `${obj[key].payment.first_name} ${obj[key].payment.last_name}`,
               email: obj[key].payment.email,
-              // title: obj[key].title
+              title: obj[key].title
             });
           }
           console.log(clients);
-          commit('setLoadedClients', clients);
+          commit("setLoadedClients", clients);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -142,21 +141,21 @@ export default new Vuex.Store({
       console.log(payload);
       firebase
         .database()
-        .ref('programs/')
+        .ref("programs/")
         .child(payload)
         .remove();
       console.log(`${payload}removed`);
     },
     autoSignIn({ commit }, payload) {
-      commit('setUser', { id: payload.uid, registeredTournaments: [] });
+      commit("setUser", { id: payload.uid, registeredTournaments: [] });
     },
     logout({ commit }) {
       firebase.auth().signOut();
-      commit('setUser', null);
+      commit("setUser", null);
     },
     clearError({ commit }) {
-      commit('clearError');
-    },
+      commit("clearError");
+    }
   },
 
   getters: {
@@ -190,6 +189,6 @@ export default new Vuex.Store({
     },
     error(state) {
       return state.error;
-    },
-  },
+    }
+  }
 });
