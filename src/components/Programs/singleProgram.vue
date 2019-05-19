@@ -24,7 +24,7 @@
 
                   <v-card-actions class="align">
                     <h1>€{{program.price}}&nbsp;</h1>
-                    <paypal :amount="program.price"></paypal>
+                    <paypal :amount="program.price" :title="program.title"></paypal>
                   </v-card-actions>
                 </v-flex>
               </v-layout>
@@ -36,36 +36,36 @@
   </v-container>
 </template>
 <script>
-import Paypal from './PayPal';
+import Paypal from "./PayPal";
 
 export default {
   data() {
     return {
       id: this.$route.params.id,
-      amount: '',
+      amount: "",
       client: {
-        name: '',
-        email: '',
-        title: '',
-        reached: false,
+        name: "",
+        email: "",
+        title: "",
+        reached: false
       },
 
-      btnDisabled: true,
+      btnDisabled: true
     };
   },
   components: {
-    paypal: Paypal,
+    paypal: Paypal
   },
   methods: {
     upload() {
       this.$http
-        .post('https://tournament-website.firebaseio.com/clients.json', {
+        .post("https://tournament-website.firebaseio.com/clients.json", {
           name: this.client.name,
           email: this.client.email,
           title: this.client.title,
-          reached: this.client.reached,
+          reached: this.client.reached
         })
-        .then((data) => {
+        .then(data => {
           console.log(data);
           //   this.submitted = true;
         });
@@ -74,16 +74,16 @@ export default {
       if (this.name != null && this.email != null) {
         this.btnDisabled = false;
       }
-    },
+    }
   },
   computed: {
     program() {
       return this.$store.getters.loadedProgram(this.id);
-    },
+    }
   },
   mounted() {
     this.client.title = this.program.title;
-  },
+  }
 };
 </script>
 <style scoped>
