@@ -53,15 +53,6 @@ export default {
           transactions: [
             {
               amount: { total: this.amount, currency: "EUR" }
-            },
-            {
-              items_list: {
-                items: [
-                  {
-                    name: this.title
-                  }
-                ]
-              }
             }
           ]
         }
