@@ -9,8 +9,9 @@
                 <v-flex xs12 sm12 md12>
                   <v-card-title class="align" primary-title>
                     <h2>{{program.title}}</h2>
-                    <hr>
                   </v-card-title>
+                  <hr>
+
                   <h2 style="margin-left: 15px;">
                     <span style="color:#00897b">PRICE:</span>
                     €{{program.price}}

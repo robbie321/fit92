@@ -28,17 +28,13 @@
           <p>All our products are 100% personalised to you, your lifestyle and your goals.</p>
         </v-flex>
         <v-flex xs12 sm4 md4 text-xs-center>
-          <v-img
-            style="height:auto; width: 128px;     display: -webkit-inline-box;"
-            src="https://images.sftcdn.net/images/t_app-logo-l,f_auto,dpr_auto/p/b6197d55-14f8-4644-9024-596ce630b41b/2027944199/my-circle-k-icon.png"
-          ></v-img>
+          <img src="./../assets/hp-circle-one.png" alt="pic" style="height:auto; width: 128px;">
+
           <p>You will receive 24/7 support and guidance through all our plans.</p>
         </v-flex>
         <v-flex xs12 sm4 md4 text-xs-center>
-          <v-img
-            style="height:auto; width: 128px;     display: -webkit-inline-box;"
-            src="https://images.sftcdn.net/images/t_app-logo-l,f_auto,dpr_auto/p/b6197d55-14f8-4644-9024-596ce630b41b/2027944199/my-circle-k-icon.png"
-          ></v-img>
+          <img src="./../assets/hp-circle-one.png" alt="pic" style="height:auto; width: 128px;">
+
           <p>You will receive 24/7 support and guidance through all our plans.</p>
         </v-flex>
       </v-layout>
