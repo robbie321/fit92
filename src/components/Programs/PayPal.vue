@@ -27,7 +27,7 @@ export default {
       return new Promise((resolve, reject) => {
         console.log(creds);
         axios
-          .post("http://localhost:1337/checkoutpaypal", creds, {
+          .post("https://afternoon-citadel-39632.herokuapp.com/checkoutpaypal", creds, {
             crossdomain: true
           })
           .then(
