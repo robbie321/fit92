@@ -86,7 +86,7 @@ export default {
 </script>
 <style scoped>
 .home {
-  background-image: url("https://static3.businessinsider.com/image/5be1c09cda27f838ef59811f/gymshark-block-t-shirt.jpg");
+  background-image: url("https://www.essentiallysports.com/wp-content/uploads/2-1.jpg");
   background-repeat: no-repeat;
   background-size: 100% 40%;
 }
