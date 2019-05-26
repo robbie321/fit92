@@ -3,7 +3,7 @@
     <h1 style="text-align:center">MY CLIENTS</h1>
 
     <v-layout justify-center row wrap>
-      <v-flex xs12 sm8 v-for="client in clients" :key="client.name">
+      <v-flex xs12 sm8 v-for="client in clients" :key="client.id">
         <v-card class="elevation-3 singleBlog" flat>
           <v-container fluid>
             <v-layout row>
@@ -13,7 +13,13 @@
                 <h1>EMAIL: {{client.email}}</h1>
               </v-flex>
             </v-layout>
-            <v-switch label="Contacted Client" color="success"></v-switch>
+            <!-- <div v-if="!client.contacted"></div> -->
+            <v-switch
+              v-model.lazy="client.contacted"
+              @change="markedDone(client.contacted, client.id)"
+              :label="`Contacted Client: ${client.contacted.toString()}`"
+              color="success"
+            ></v-switch>
           </v-container>
         </v-card>
       </v-flex>
@@ -21,21 +27,23 @@
   </v-container>
 </template>
 <script>
+import Axios from "axios";
 export default {
   data() {
     return {
       show: true,
-      toggled: false,
+      toggled: false
     };
   },
   methods: {
-    markedDone(reached, id) {
-      if (!reached) {
-        client = this.aClient(id);
-        client.reached = true;
+    markedDone(contacted, id) {
+      if (contacted) {
+        contacted = true;
+      } else {
+        contacted = false;
       }
-      console.log('Success');
-    },
+      this.$store.dispatch("contacted", { contacted, id });
+    }
   },
   computed: {
     clients() {
@@ -46,11 +54,11 @@ export default {
     },
     userIsAuthenticated() {
       return (
-        this.$store.getters.user !== null
-        && this.$store.getters.user !== undefined
+        this.$store.getters.user !== null &&
+        this.$store.getters.user !== undefined
       );
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>

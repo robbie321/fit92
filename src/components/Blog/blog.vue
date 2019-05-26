@@ -7,7 +7,7 @@
     </v-layout>
     <v-layout row wrap v-for="blog in filteredBlogs" :key="blog.id" class="singleBlog">
       <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
-        <v-card class="card-image" v-bind:to="'/blog/'+blog.id" color="white" hover>
+        <v-card class="card-image" color="white" hover>
           <v-img :src="blog.image"></v-img>
           <v-card-title primary-title class="justify-center heading">
             <b>{{blog.title | toUppercase}}</b>
@@ -16,8 +16,13 @@
             <v-layout row>
               <v-flex xs12 sm12 md12>
                 <p>{{blog.content | snippet}}</p>
-                <v-card-actions>
-                  <!-- <v-btn color="error">Remove</v-btn> -->
+                <v-card-actions class="align">
+                  <v-btn class="primary" v-bind:to="'/blog/'+blog.id">READ POST</v-btn>
+                  <v-btn
+                    v-if="userIsAuthenticated"
+                    @click="removeBlog(blog.id)"
+                    class="error"
+                  >DELETE</v-btn>
                 </v-card-actions>
               </v-flex>
             </v-layout>
@@ -26,41 +31,19 @@
       </v-flex>
     </v-layout>
   </v-container>
-  <!-- <div>
-        <h3 class="headings">Blogger Malone</h3>
-        <div class="row">
-            <div class="col-6 col-md-2"></div>
-            <div class="col-12 col-md-8"><p class="headings">Here I will share the things that make me go hmmmmm</p> </div>
-            <div class="col-6 col-md-2">
-            </div>
-          </div>
-
-        <div id=showBlogs>
-          <h3>All Blog Articles</h3>
-          <input type="text" v-model="search" placeholder="search Blogs"/>
-          <div v-for="blog in filteredBlogs" :key="blog.id" class="singleBlog">
-              <router-link v-bind:to ="'/blog/'+blog.id"><h3><b>{{blog.title | toUppercase}}</b></h3></router-link>
-              <article>{{blog.content | snippet}}</article>
-              <v-btn v-if="userIsAuthenticated" v-on:click="removeBlog(blog.id)" class="deleteButton error">Delete</v-btn>
-
-          </div>
-             <v-btn v-if="userIsAuthenticated" class="primary" :to="{name: 'post'}">New Post</v-btn>
-
-        </div>
-  </div>-->
 </template>
 <script>
 export default {
   data() {
     return {
       // blogs: [],
-      id: "",
+      // id: "",
       search: ""
     };
   },
   methods: {
     removeBlog(id) {
-      return this.$store.dispatch("deleteBlog", { id: this.id });
+      return this.$store.dispatch("removeBlog", { id });
       console.log(`${id} Blog Removed`);
     }
   },

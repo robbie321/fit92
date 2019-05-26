@@ -14,11 +14,12 @@ import axios from "axios";
 
 export default {
   name: "paypal",
-  props: ["amount", "title"],
+  props: ["amount", "title", "contacted"],
   data() {
     return {
       error: false,
       success: false
+      // contacted: false
     };
   },
   methods: {
@@ -26,13 +27,9 @@ export default {
       return new Promise((resolve, reject) => {
         console.log(creds);
         axios
-          .post(
-            "https://afternoon-citadel-39632.herokuapp.com/checkoutpaypal",
-            creds,
-            {
-              crossdomain: true
-            }
-          )
+          .post("http://localhost:1337/checkoutpaypal", creds, {
+            crossdomain: true
+          })
           .then(
             res => resolve()
             // return axios.post("http://localhost:1337/ipn");
@@ -62,7 +59,8 @@ export default {
         paymentID: data.paymentID,
         payerID: data.payerID,
         amount: this.amount,
-        title: this.title
+        title: this.title,
+        contacted: this.contacted
       };
       this.sendDataPaypal({ data })
         .then(() => {
@@ -77,7 +75,7 @@ export default {
         style: {
           color: "blue",
           shape: "pill",
-          label: "pay",
+          // label: "pay",
           tagline: "true",
           size: "medium"
         },

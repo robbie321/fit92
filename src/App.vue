@@ -32,7 +32,7 @@
           class="text-uppercase white--text"
           flat
           v-for="item in menuItems"
-          :key="item.title"
+          :key="item.id"
           router
           :to="item.link"
         >
@@ -53,13 +53,24 @@
         <v-icon>close</v-icon>
       </v-btn>-->
     </v-content>
-    <!-- <div class="fab">
-      <vue-fab size="big" scrollAutoHide="false" mainBtnColor="#3599DB">
-        <fab-item @clickItem="clickItem" :idx="0" title="add blog/program" icon="add"/>
-        <fab-item @clickItem="clickItem" :idx="1" title="remove blog/program" icon="delete"/>
-        <fab-item @clickItem="clickItem" :idx="2" title="edit" icon="edit"/>
-      </vue-fab>
-    </div>-->
+    <v-footer dark height="auto">
+      <v-card class="flex" flat tile>
+        <v-card-title class="teal darken-1">
+          <strong class="subheading">Get connected with fit92 on social networks!</strong>
+
+          <v-spacer></v-spacer>
+
+          <v-btn v-for="icon in icons" :key="icon" class="mx-3" :href="icon.link" dark icon>
+            <v-icon size="24px">{{icon.name}}</v-icon>
+          </v-btn>
+        </v-card-title>
+
+        <v-card-actions class="grey darken-3 justify-center">
+          &copy;2018 —
+          <strong>FIT92</strong>
+        </v-card-actions>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 
@@ -67,11 +78,27 @@
 export default {
   // name: 'App',
 
-  data() {
-    return {
-      sideNav: false
-    };
-  },
+  data: () => ({
+    icons: [
+      {
+        name: "fab fa-facebook",
+        link: "https://www.facebook.com/quansinjuryclinic/"
+      },
+      {
+        name: "fab fa-twitter",
+        link: ""
+      },
+      {
+        name: "fab fa-youtube",
+        link: "https://www.youtube.com/channel/UCutsqY6zrLwuhRsXqHOVp8A"
+      },
+      {
+        name: "fab fa-instagram",
+        link: "https://www.instagram.com/jq_fit92/?hl=en"
+      }
+    ],
+    sideNav: false
+  }),
   computed: {
     menuItems() {
       let menuItems = [

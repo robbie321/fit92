@@ -1,46 +1,40 @@
 <template>
   <div id="addBlog">
-    <h2>Add a new Blog post</h2>
-    <form v-if="!submitted">
-      <label>Blog Title</label>
-      <input type="text" v-model.lazy="blog.title" required>
-      <label>Thumbnail</label>
-      <input type="file" @change="onFileSelected">
-      <label>Blog Content:</label>
-      <textarea v-model.lazy="blog.content"></textarea>
+    <v-layout align-center justify-center>
+      <v-flex xs11 sm12 md12>
+        <v-card>
+          <v-card-text>
+            <h2>Add a new Blog post</h2>
 
-      <v-btn class="success" v-on:click.prevent="post">Post Blog</v-btn>
-    </form>
+            <form v-if="!submitted">
+              <label>Blog Title</label>
+              <input type="text" v-model.lazy="blog.title" required>
+              <label>Thumbnail</label>
+              <input type="file" @change="onFileSelected">
+              <label>Blog Content:</label>
+              <textarea v-model.lazy="blog.content"></textarea>
 
-    <div v-if="submitted">
-      <h3>Post is now added</h3>
-    </div>
+              <v-btn class="success" v-on:click.prevent="post">Post Blog</v-btn>
+            </form>
 
-    <div id="checkboxes">
-      <label>Tech</label>
-      <input type="checkbox" value="tech" v-model="blog.category">
-      <label>Pop Culture</label>
-      <input type="checkbox" value="pop culture" v-model="blog.category">
-      <label>Sports</label>
-      <input type="checkbox" value="sports" v-model="blog.category">
-      <label>Gaming</label>
-      <input type="checkbox" value="gaming" v-model="blog.category">
-    </div>
-    <!--
-    <div id="preview">
-      <h3>Blog Priview</h3>
-      <p>Blog Title:{{blog.title}}</p>
-      <p>
-        Blog Content:
-        <br>
-        {{blog.content}}
-      </p>
-      <p>Categories:</p>
-      <ul>
-        <li v-for="category in blog.category" :key="category.category">{{category}}</li>
-      </ul>
-      <p>Author: {{blog.author}}</p>
-    </div>-->
+            <div v-if="submitted">
+              <h3>Post is now added</h3>
+            </div>
+
+            <div id="checkboxes">
+              <label>Tech</label>
+              <input type="checkbox" value="tech" v-model="blog.category">
+              <label>Pop Culture</label>
+              <input type="checkbox" value="pop culture" v-model="blog.category">
+              <label>Sports</label>
+              <input type="checkbox" value="sports" v-model="blog.category">
+              <label>Gaming</label>
+              <input type="checkbox" value="gaming" v-model="blog.category">
+            </div>
+          </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 <script>
@@ -48,32 +42,32 @@ export default {
   data() {
     return {
       blog: {
-        title: '',
-        content: '',
+        title: "",
+        content: "",
         category: [],
-        author: '',
-        image: '',
+        author: "",
+        image: ""
       },
-      authors: ['Robbie Malone'],
-      submitted: false,
+      authors: ["Robbie Malone"],
+      submitted: false
     };
   },
   methods: {
     post() {
       this.$http
-        .post('https://tournament-website.firebaseio.com/posts.json', this.blog)
-        .then(function (data) {
+        .post("https://tournament-website.firebaseio.com/posts.json", this.blog)
+        .then(function(data) {
           console.log(data);
           this.submitted = true;
         });
     },
     onFileSelected(event) {
       this.blog.image = event.target.files[0];
-    },
-  },
+    }
+  }
 };
 </script>
-<style>
+<style scoped>
 #addBlog * {
   box-sizing: border-box;
 }

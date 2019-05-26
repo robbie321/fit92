@@ -45,6 +45,28 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    contacted({ commit }, payload) {
+      firebase
+        .database()
+        .ref("clients/" + payload.id + "/payment")
+        .update({
+          contacted: payload.contacted
+        });
+    },
+    removeProgram({ commt }, payload) {
+      console.log("got here");
+      console.log(payload.id);
+      firebase
+        .database()
+        .ref("programs/" + payload.id)
+        .remove();
+    },
+    removeBlog({ commit }, payload) {
+      firebase
+        .database()
+        .ref("posts/" + payload.id)
+        .remove();
+    },
     signUserIn({ commit }, payload) {
       commit("setLoading", true);
       commit("clearError");
@@ -103,7 +125,9 @@ export default new Vuex.Store({
               content: obj[key].content,
               title: obj[key].title,
               price: obj[key].price,
-              image: obj[key].image
+              image: obj[key].image,
+              overview: obj[key].overview,
+              author: obj[key].author
             });
           }
           commit("setLoadedPrograms", programs);
@@ -127,7 +151,8 @@ export default new Vuex.Store({
               id: key,
               name: `${obj[key].payment.first_name} ${obj[key].payment.last_name}`,
               email: obj[key].payment.email,
-              title: obj[key].payment.title
+              title: obj[key].payment.title,
+              contacted: obj[key].payment.contacted
             });
           }
           console.log(clients);
@@ -179,7 +204,7 @@ export default new Vuex.Store({
       return state.loadedClients.reverse();
     },
     loadedClient(state) {
-      clientID => state.loadedClients.find(client => client, id == clientID);
+      return clientID => state.loadedClients.find(client => client, id == clientID);
     },
     user(state) {
       return state.user;

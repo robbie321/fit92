@@ -1,38 +1,49 @@
 <template>
-  <v-container>
-    <v-layout id="singleBlog" row wrap>
-      <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
-        <h1>{{program.title}}</h1>
-        <article>By {{program.author}}</article>
-
-        <div id="enroll">
-          <v-card flat class="elevation-3">
+  <div class="home">
+    <v-container>
+      <v-layout id="singleBlog" align-center justify-center row wrap>
+        <v-flex justify-center xs12 sm10 md12>
+          <v-card flat class="elevation-6 homeCard">
             <v-container fluid>
               <v-layout row>
                 <v-flex xs12 sm12 md12>
-                  <v-card-title primary-title>
-                    <h2>
-                      <span style="color:red">ENROLL NOW:</span>
-                      {{program.title}}
-                    </h2>
+                  <v-card-title class="align" primary-title>
+                    <h2>{{program.title}}</h2>
+                    <hr>
                   </v-card-title>
-                  <h2 style="margin-left: 15px">
-                    <span style="color:red">PRICE:</span>
+                  <h2 style="margin-left: 15px;">
+                    <span style="color:#00897b">PRICE:</span>
                     €{{program.price}}
                   </h2>
+
                   <div>
                     <v-card-actions class="align">
-                      <paypal :amount="program.price" :title="program.title"></paypal>
+                      <paypal :contacted="false" :amount="program.price" :title="program.title"></paypal>
                     </v-card-actions>
                   </div>
+                  <hr>
                 </v-flex>
               </v-layout>
             </v-container>
           </v-card>
-        </div>
-      </v-flex>
-    </v-layout>
-  </v-container>
+          <h1>{{program.title}}</h1>
+          <article>By {{program.author}}</article>
+          <!-- <h2 class="align">WHAT THIS PROGRAM IS</h2> -->
+          <h2 class="align">OVERVIEW</h2>
+          <p>{{program.overview}}</p>
+          <h2 class="align">GYM PLAN</h2>
+
+          <ul>
+            <li v-for="line in program.content" :key="line">
+              <span>{{line}}</span>
+            </li>
+          </ul>
+
+          <div id="enroll"></div>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 <script>
 import Paypal from "./PayPal";
@@ -42,6 +53,7 @@ export default {
     return {
       id: this.$route.params.id,
       amount: "",
+      contaced: "",
       client: {
         name: "",
         email: "",
@@ -73,6 +85,15 @@ export default {
 };
 </script>
 <style scoped>
+.home {
+  background-image: url("https://static3.businessinsider.com/image/5be1c09cda27f838ef59811f/gymshark-block-t-shirt.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 40%;
+}
+.homeCard {
+  margin-top: 200px;
+  margin-bottom: 40px;
+}
 #singleBlog {
   max-width: 900px;
   margin: 0 auto;
@@ -80,5 +101,28 @@ export default {
 .align {
   margin-top: 10px;
   float: center;
+  /* text-align: center; */
+}
+ul {
+  text-align: left;
+  /* margin-left: 50px; */
+  list-style-position: outside;
+}
+li {
+  font-size: 26px;
+  color: rgb(250, 58, 58);
+}
+li span {
+  font-size: 18px;
+  color: rgb(168, 168, 168);
+}
+p {
+  font-size: 26px;
+}
+hr {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
 </style>

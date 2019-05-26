@@ -6,7 +6,7 @@
           <v-flex text-xs-center>
             <h1 class="jumboText">ARE YOU READY TO MAKE A CHANGE?</h1>
             <!-- <hr> -->
-            <v-btn color="green" large>START NOW</v-btn>
+            <v-btn to="/programs" color="green" large>START NOW</v-btn>
           </v-flex>
         </v-layout>
       </v-container>
@@ -18,26 +18,27 @@
         </v-flex>
       </v-layout>
 
-      <v-layout wrap row>
-        <v-flex xs12 md4>
+      <v-layout wrap row justify-center>
+        <v-flex xs10 sm4 md4 text-xs-center>
+          <img src="./../assets/hp-circle-one.png" alt="pic" style="height:auto; width: 128px;">
           <!-- <v-img
-            style="width: 64px;"
-            src="https://images.sftcdn.net/images/t_app-logo-l,f_auto,dpr_auto/p/b6197d55-14f8-4644-9024-596ce630b41b/2027944199/my-circle-k-icon.png"
+            src="./../assets/hp-circle-one.png"
+            style="height:auto; width: 128px;     display: -webkit-inline-box;"
           ></v-img>-->
           <p>All our products are 100% personalised to you, your lifestyle and your goals.</p>
         </v-flex>
-        <v-flex xs12 md4 text-xs-center>
-          <!-- <v-img
-            style="height:auto; width: 64px"
+        <v-flex xs12 sm4 md4 text-xs-center>
+          <v-img
+            style="height:auto; width: 128px;     display: -webkit-inline-box;"
             src="https://images.sftcdn.net/images/t_app-logo-l,f_auto,dpr_auto/p/b6197d55-14f8-4644-9024-596ce630b41b/2027944199/my-circle-k-icon.png"
-          ></v-img>-->
+          ></v-img>
           <p>You will receive 24/7 support and guidance through all our plans.</p>
         </v-flex>
-        <v-flex xs12 md4 text-xs-center>
-          <!-- <v-img
-            style="height:auto; width: 64px"
+        <v-flex xs12 sm4 md4 text-xs-center>
+          <v-img
+            style="height:auto; width: 128px;     display: -webkit-inline-box;"
             src="https://images.sftcdn.net/images/t_app-logo-l,f_auto,dpr_auto/p/b6197d55-14f8-4644-9024-596ce630b41b/2027944199/my-circle-k-icon.png"
-          ></v-img>-->
+          ></v-img>
           <p>You will receive 24/7 support and guidance through all our plans.</p>
         </v-flex>
       </v-layout>
@@ -49,13 +50,20 @@
 export default {
   data() {
     return {
-      jumboTron: [
-        { id: 1, image: '', description: 'rgwesrg' },
-        { id: 2, image: '', description: 'ergwerg' },
-        { id: 3, image: '', description: 'wergewr' },
-      ],
+      videoId: "lG0Ys-2d4MA",
+      playerVars: {
+        autoplay: 1
+        // frameborder: 0
+      }
     };
   },
+  methods: {
+    playing() {
+      // this.$refs.video.player.loadVideoById("bHQqvYy5KYo", "large");
+      // this.$refs.video.player.playVideo();
+      console.log("o/ we are watching!!!");
+    }
+  }
 };
 </script>
 <style scoped>

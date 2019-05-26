@@ -25,13 +25,6 @@
       <v-layout justify-center row wrap class="singleBlog">
         <v-flex xs12 sm10 md4 v-for="program in programs" :key="program.id">
           <v-card class="cardMargin elevation-3" flat color="white lighten-4" hover>
-            <!-- <v-btn
-            fab
-            small
-            v-if="userIsAuthenticated"
-            v-on:click="remove(program.id)"
-            class="deleteButton error"
-            >X</v-btn>-->
             <v-container fluid>
               <v-layout row>
                 <v-flex xs12 sm md12>
@@ -42,7 +35,7 @@
                     </div>
                   </v-card-title>
                   <hr>
-                  <p style="margin-top:20px" align="center">{{program.content}}</p>
+                  <p style="margin-top:20px" align="center">{{program.overview}}</p>
                   <v-card-actions class="align">
                     <v-btn
                       v-bind:to="'/programs/'+program.id"
@@ -50,6 +43,11 @@
                       color="red"
                       class="white--text"
                     >START NOW</v-btn>
+                    <v-btn
+                      v-if="userIsAuthenticated"
+                      @click="remove(program.id)"
+                      class="deleteButton error"
+                    >DELETE</v-btn>
                   </v-card-actions>
                 </v-flex>
               </v-layout>
@@ -58,23 +56,6 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <!-- <div>
-        <h3 class="headings">Programs</h3>
-
-
-        <div id=showBlogs>
-          <h3>All Blog Articles</h3>
-          <input type="text" v-model="search" placeholder="search Blogs"/>
-          <div v-for="program in programs" :key="program.id" class="singleBlog">
-              <router-link v-bind:to ="'/programs/'+programs.id"><h3><b>{{program.title | toUppercase}}</b></h3></router-link>
-              <article>{{program.content | snippet}}</article>
-              <v-btn v-if="userIsAuthenticated" v-on:click="removeBlog(blog.id)" class="deleteButton error">Delete</v-btn>
-
-          </div>
-             <v-btn v-if="userIsAuthenticated" class="primary" :to="{name: 'programpost'}">New Program</v-btn>
-
-        </div>
-    </div>-->
   </div>
 </template>
 <script>
@@ -82,39 +63,29 @@ export default {
   data() {
     return {
       // blogs: [],
-      id: '',
-      search: '',
+      id: "",
+      search: ""
     };
   },
   methods: {
     remove(id) {
-      return this.$store.dispatch('deleteProgram', id);
+      console.log(id);
+      this.$store.dispatch("removeProgram", { id });
       console.log(`${id} Program Removed`);
-    },
+    }
   },
-  // created() {
-  //   this.$http.get('https://tournament-website.firebaseio.com/posts.json').then(data => data.json()).then(function (data) {
-  //     const tempArray = [];
-  //     for (const key in data) {
-  //       data[key].id = key;
-  //       tempArray.push(data[key]);
-  //       // console.log(data[key]);
-  //     }
-  //     console.log(tempArray);
-  //     this.blogs = tempArray;
-  //   });
-  // },
+
   computed: {
     programs() {
       return this.$store.getters.loadedPrograms;
     },
     userIsAuthenticated() {
       return (
-        this.$store.getters.user !== null
-        && this.$store.getters.user !== undefined
+        this.$store.getters.user !== null &&
+        this.$store.getters.user !== undefined
       );
-    },
-  },
+    }
+  }
 };
 </script>
 <style>
