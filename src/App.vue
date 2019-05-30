@@ -16,9 +16,9 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="#263238" class="justify-center" flat app>
+    <v-toolbar color="white" class="justify-center" flat app>
       <v-toolbar-side-icon @click.native.stop="sideNav = !sideNav" class="hidden-sm-and-up"></v-toolbar-side-icon>
-      <v-toolbar-title class="text-uppercase white--text">
+      <v-toolbar-title class="text-uppercase black--text">
         <v-container>
           <router-link to="/" tag="span" style="cursor: pointer">
             <span class="font-weight-light">FIT</span>
@@ -29,14 +29,14 @@
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
         <v-btn
-          class="text-uppercase white--text"
+          class="text-uppercase black--text"
           flat
           v-for="item in menuItems"
           :key="item.id"
           router
           :to="item.link"
         >
-          <v-icon left>{{item.icon}}</v-icon>
+          <!-- <v-icon left>{{item.icon}}</v-icon> -->
           {{item.title}}
         </v-btn>
         <v-btn class="text-uppercase white--text" flat v-if="userIsAuthenticated" @click="onLogout">
@@ -47,30 +47,7 @@
 
     <v-content>
       <router-view></router-view>
-
-      <!-- <v-btn v-if="userIsAuthenticated" color="blue" dark fixed bottom right fab>
-        <v-icon>add</v-icon>
-        <v-icon>close</v-icon>
-      </v-btn>-->
     </v-content>
-    <v-footer dark height="auto">
-      <v-card class="flex" flat tile>
-        <v-card-title class="teal darken-1">
-          <strong class="subheading">Get connected with fit92 on social networks!</strong>
-
-          <v-spacer></v-spacer>
-
-          <v-btn v-for="icon in icons" :key="icon" class="mx-3" :href="icon.link" dark icon>
-            <v-icon size="24px">{{icon.name}}</v-icon>
-          </v-btn>
-        </v-card-title>
-
-        <v-card-actions class="grey darken-3 justify-center">
-          &copy;2018 —
-          <strong>FIT92</strong>
-        </v-card-actions>
-      </v-card>
-    </v-footer>
   </v-app>
 </template>
 
@@ -80,14 +57,6 @@ export default {
 
   data: () => ({
     icons: [
-      {
-        name: "fab fa-facebook",
-        link: "https://www.facebook.com/quansinjuryclinic/"
-      },
-      {
-        name: "fab fa-twitter",
-        link: ""
-      },
       {
         name: "fab fa-youtube",
         link: "https://www.youtube.com/channel/UCutsqY6zrLwuhRsXqHOVp8A"
@@ -102,10 +71,9 @@ export default {
   computed: {
     menuItems() {
       let menuItems = [
-        { icon: "home", title: "blog", link: "/blog" },
-        // { icon: 'lock', title: 'sign up', link: '/signup' },
-        { icon: "lock", title: "classes", link: "/classes" },
-        { icon: "lock", title: "meals & plans", link: "/programs" },
+        { icon: "lock", title: "home", link: "/" },
+        { icon: "lock", title: "services", link: "/programs" },
+        { title: "e-guides", link: "/guides" },
         { icon: "settings", title: "admin", link: "/signin" }
       ];
       if (this.userIsAuthenticated) {
@@ -140,6 +108,14 @@ body {
   /* font-family: "Courier New", Courier, monospace; */
   font-family: "Oswald", sans-serif;
   background: #dfdfdd;
+}
+.primaryColor {
+  background-color: black;
+  color: #b7a460;
+}
+
+.secondaryColor {
+  color: black;
 }
 /*stops page shifting to left when scroll bar appears*/
 html {

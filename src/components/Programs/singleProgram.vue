@@ -89,7 +89,7 @@ export default {
 .home {
   background-image: url("https://www.essentiallysports.com/wp-content/uploads/2-1.jpg");
   background-repeat: no-repeat;
-  background-size: 100% 40%;
+  background-size: 100% 25%;
 }
 .homeCard {
   margin-top: 200px;

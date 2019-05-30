@@ -45,16 +45,6 @@
               <h3>Post is now added</h3>
             </div>
 
-            <div id="checkboxes">
-              <label>Fat Loss</label>
-              <input type="checkbox" value="tech" v-model="program.category">
-              <label>Bulking</label>
-              <input type="checkbox" value="pop culture" v-model="program.category">
-              <label>Conditioning</label>
-              <input type="checkbox" value="sports" v-model="program.category">
-              <label>Shredding</label>
-              <input type="checkbox" value="gaming" v-model="program.category">
-            </div>
           </v-card-text>
         </v-card>
       </v-flex>
@@ -125,7 +115,9 @@ export default {
       });
     },
     makeBold() {
-      $(document).ready(function() {});
+      $(document).ready(function() {
+        
+      });
     },
     maxLengthCheck(object) {
       if (object.value.length > object.maxLength) {

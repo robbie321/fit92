@@ -28,19 +28,17 @@
             <v-container fluid>
               <v-layout row>
                 <v-flex xs12 sm md12>
-                  <!-- <v-img height="300px" :src="program.image"></v-img> -->
-                  <v-card-title class="align" primary-title>
-                    <div>
-                      <h2 class="black--text" mb-0>{{program.title}}</h2>
-                    </div>
+                  <img class="responsive" src="./../../assets/FIT92.png">
+                  <v-card-title class="justify-center" primary-title>
+                    <h2 class="black--text">{{program.title}}</h2>
                   </v-card-title>
                   <hr>
-                  <p style="margin-top:20px" align="center">{{program.overview}}</p>
+                  <!-- <p style="margin-top:20px" align="center">{{program.overview}}</p> -->
                   <v-card-actions class="align">
                     <v-btn
                       v-bind:to="'/programs/'+program.id"
                       style="margin-right: 10px"
-                      color="red"
+                      color="success"
                       class="white--text"
                     >START NOW</v-btn>
                     <v-btn
@@ -89,6 +87,11 @@ export default {
 };
 </script>
 <style>
+.responsive {
+  /* max-width: 200px; */
+  width: 100%;
+  height: auto;
+}
 .align {
   justify-content: center;
   align-content: center;
@@ -127,6 +130,7 @@ h4 {
   text-decoration: none;
 }
 h2 {
+  text-align: center;
   font-size: 32px;
 }
 a:-webkit-any-link {

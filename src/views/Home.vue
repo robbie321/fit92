@@ -1,72 +1,94 @@
 <template>
   <div>
-    <v-jumbotron class="image" dark>
-      <v-container fill-height>
-        <v-layout align-center>
-          <v-flex text-xs-center>
-            <h1 class="jumboText">ARE YOU READY TO MAKE A CHANGE?</h1>
-            <!-- <hr> -->
-            <v-btn to="/programs" color="green" large>START NOW</v-btn>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-jumbotron>
-    <v-container>
-      <v-layout justify-center>
-        <v-flex xs12 sm10>
-          <h1 class="why">WHY CHOOSE FIT92?</h1>
-        </v-flex>
-      </v-layout>
-
-      <v-layout wrap row justify-center>
-        <v-flex xs10 sm4 md4 text-xs-center>
-          <img src="./../assets/hp-circle-one.png" alt="pic" style="height:auto; width: 128px;">
-          <!-- <v-img
-            src="./../assets/hp-circle-one.png"
-            style="height:auto; width: 128px;     display: -webkit-inline-box;"
-          ></v-img>-->
-          <p>All our products are 100% personalised to you, your lifestyle and your goals.</p>
-        </v-flex>
-        <v-flex xs12 sm4 md4 text-xs-center>
-          <img src="./../assets/hp-circle-one.png" alt="pic" style="height:auto; width: 128px;">
-
-          <p>You will receive 24/7 support and guidance through all our plans.</p>
-        </v-flex>
-        <v-flex xs12 sm4 md4 text-xs-center>
-          <img src="./../assets/hp-circle-one.png" alt="pic" style="height:auto; width: 128px;">
-
-          <p>You will receive 24/7 support and guidance through all our plans.</p>
-        </v-flex>
-      </v-layout>
-    </v-container>
+    <div id="left" class="left primaryColor">
+      <img src="https://www.stevecookhealth.com/img/stevebottomsquare.jpg" alt>
+    </div>
+    <div id="right" class="right primaryColor">
+      <h1>WHAT FIT92 OFFERS</h1>
+      <v-btn color="#b7a460" to="/programs">BEGIN NOW</v-btn>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      videoId: "lG0Ys-2d4MA",
-      playerVars: {
-        autoplay: 1
-        // frameborder: 0
-      }
-    };
-  },
-  methods: {
-    playing() {
-      // this.$refs.video.player.loadVideoById("bHQqvYy5KYo", "large");
-      // this.$refs.video.player.playVideo();
-      console.log("o/ we are watching!!!");
-    }
-  }
+  data() {}
 };
 </script>
 <style scoped>
-.align {
-  /* display: flex; */
+@media screen and (min-width: 701px) {
+  h1 {
+    font-size: 48px;
+  }
+  .left {
+    width: 50%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    height: 100vh;
+  }
+  .right {
+    width: 50%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    height: 100vh;
+  }
+}
+@media screen and (max-width: 700px) {
+  h1 {
+    font-size: 23px;
+  }
+  .left {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    height: 40vh;
+  }
+  .right {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    height: 60vh;
+  }
+}
+@media screen and (max-width: 570px) {
+  h1 {
+    font-size: 20px;
+  }
+}
+
+/* .left {
+  width: 50%;
+  display: flex;
+  flex-flow: column wrap;
   align-items: center;
   justify-content: center;
+  float: left;
+  height: 100vh;
+}
+.right {
+  width: 50%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  height: 100vh;
+} */
+#left > img {
+  width: 100%;
+  height: auto;
 }
 .image {
   background-image: url("https://www.essentiallysports.com/wp-content/uploads/2-1.jpg");
