@@ -56,58 +56,58 @@ export default {
   data() {
     return {
       program: {
-        title: "",
-        image: "",
-        overview: "",
+        title: '',
+        image: '',
+        overview: '',
         content: [],
-        price: "",
-        author: "Jason Quan"
+        price: '',
+        author: 'Jason Quan',
       },
-      submitted: false
+      submitted: false,
     };
   },
   methods: {
     post() {
       this.$http
         .post(
-          "https://tournament-website.firebaseio.com/programs.json",
-          this.program
+          'https://tournament-website.firebaseio.com/programs.json',
+          this.program,
           // {
           //   headers: {
           //     "content-type": "multipart/form-data"
           //   }
           // }
         )
-        .then(function(data) {
+        .then(function (data) {
           console.log(data);
           this.submitted = true;
         });
     },
     addLineToList() {
-      $(document).ready(function() {
-        var max_fields = 10; //maximum input boxes allowed
-        var wrapper = $(".input_fields_wrap"); //Fields wrapper
-        var add_button = $(".add_field_button"); //Add button ID
-        var i = 3; //intianl content count
-        var x = 1; //initlal text box count
-        $(add_button).click(function(e) {
-          //on add input button click
+      $(document).ready(() => {
+        const max_fields = 10; // maximum input boxes allowed
+        const wrapper = $('.input_fields_wrap'); // Fields wrapper
+        const add_button = $('.add_field_button'); // Add button ID
+        let i = 3; // intianl content count
+        let x = 1; // initlal text box count
+        $(add_button).click((e) => {
+          // on add input button click
           e.preventDefault();
           if (x < max_fields) {
-            //max input box allowed
-            x++; //text box increment
+            // max input box allowed
+            x++; // text box increment
             i++;
             $(wrapper).append(
-              '<div><input type="text" name="mytext[]" ${v-model.lazy="program.content[3]"}/><a href="#" class="remove_field">Remove</a></div>'
-            ); //add input box
+              '<div><input type="text" name="mytext[]" ${v-model.lazy="program.content[3]"}/><a href="#" class="remove_field">Remove</a></div>',
+            ); // add input box
           }
         });
 
-        $(wrapper).on("click", ".remove_field", function(e) {
-          //user click on remove text
+        $(wrapper).on('click', '.remove_field', function (e) {
+          // user click on remove text
           e.preventDefault();
           $(this)
-            .parent("div")
+            .parent('div')
             .remove();
           x--;
           i--;
@@ -115,8 +115,8 @@ export default {
       });
     },
     makeBold() {
-      $(document).ready(function() {
-        
+      $(document).ready(() => {
+
       });
     },
     maxLengthCheck(object) {
@@ -128,19 +128,19 @@ export default {
       let { image } = this.program;
       image = event.target.files[0];
       const data = new FormData();
-      data.append("file", this.program.image);
-    }
+      data.append('file', this.program.image);
+    },
   },
   computed: {
     isComplete() {
       return (
-        this.program.title &&
-        this.program.image &&
-        this.program.content &&
-        this.program.price
+        this.program.title
+        && this.program.image
+        && this.program.content
+        && this.program.price
       );
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

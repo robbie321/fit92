@@ -47,42 +47,42 @@
   </div>
 </template>
 <script>
-import Paypal from "./PayPal";
+import Paypal from './PayPal';
 
 export default {
   data() {
     return {
       id: this.$route.params.id,
-      amount: "",
-      contaced: "",
+      amount: '',
+      contaced: '',
       client: {
-        name: "",
-        email: "",
-        title: "",
-        reached: false
+        name: '',
+        email: '',
+        title: '',
+        reached: false,
       },
 
-      btnDisabled: true
+      btnDisabled: true,
     };
   },
   components: {
-    paypal: Paypal
+    paypal: Paypal,
   },
   methods: {
     btnStatus() {
       if (this.name != null && this.email != null) {
         this.btnDisabled = false;
       }
-    }
+    },
   },
   computed: {
     program() {
       return this.$store.getters.loadedProgram(this.id);
-    }
+    },
   },
   mounted() {
     this.client.title = this.program.title;
-  }
+  },
 };
 </script>
 <style scoped>

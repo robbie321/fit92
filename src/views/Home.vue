@@ -5,7 +5,7 @@
     </div>
     <div id="right" class="right primaryColor">
       <h1>WHAT FIT92 OFFERS</h1>
-      <v-btn color="#b7a460" to="/programs">BEGIN NOW</v-btn>
+      <v-btn color="#b7a460">BEGIN NOW</v-btn>
     </div>
   </div>
 </template>

@@ -61,16 +61,16 @@ export default {
   data() {
     return {
       // blogs: [],
-      id: "",
-      search: ""
+      id: '',
+      search: '',
     };
   },
   methods: {
     remove(id) {
       console.log(id);
-      this.$store.dispatch("removeProgram", { id });
+      this.$store.dispatch('removeProgram', { id });
       console.log(`${id} Program Removed`);
-    }
+    },
   },
 
   computed: {
@@ -79,11 +79,11 @@ export default {
     },
     userIsAuthenticated() {
       return (
-        this.$store.getters.user !== null &&
-        this.$store.getters.user !== undefined
+        this.$store.getters.user !== null
+        && this.$store.getters.user !== undefined
       );
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

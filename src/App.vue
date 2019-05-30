@@ -39,9 +39,12 @@
           <!-- <v-icon left>{{item.icon}}</v-icon> -->
           {{item.title}}
         </v-btn>
-        <v-btn class="text-uppercase white--text" flat v-if="userIsAuthenticated" @click="onLogout">
-          <v-icon left>exit_to_app</v-icon>Logout
-        </v-btn>
+        <v-btn
+          class="text-uppercase black--text"
+          flat
+          v-if="userIsAuthenticated"
+          @click="onLogout"
+        >Logout</v-btn>
       </v-toolbar-items>
     </v-toolbar>
 
@@ -58,6 +61,14 @@ export default {
   data: () => ({
     icons: [
       {
+        name: "fab fa-facebook",
+        link: "https://www.facebook.com/quansinjuryclinic/"
+      },
+      {
+        name: "fab fa-twitter",
+        link: ""
+      },
+      {
         name: "fab fa-youtube",
         link: "https://www.youtube.com/channel/UCutsqY6zrLwuhRsXqHOVp8A"
       },
@@ -73,15 +84,13 @@ export default {
       let menuItems = [
         { icon: "lock", title: "home", link: "/" },
         { icon: "lock", title: "services", link: "/programs" },
-        { title: "e-guides", link: "/guides" },
         { icon: "settings", title: "admin", link: "/signin" }
       ];
       if (this.userIsAuthenticated) {
         menuItems = [
+          { icon: "lock", title: "home", link: "/" },
           { icon: "person", title: "clients", link: "/clients" },
-          { icon: "shop", title: "programs", link: "/programs" },
-          // { icon: "shop", title: "purchased", link: "/billed" },
-          { icon: "home", title: "blog", link: "/blog" }
+          { icon: "shop", title: "services", link: "/programs" }
         ];
       }
       return menuItems;
@@ -113,7 +122,6 @@ body {
   background-color: black;
   color: #b7a460;
 }
-
 .secondaryColor {
   color: black;
 }
