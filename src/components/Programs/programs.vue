@@ -1,16 +1,14 @@
 <template>
   <div>
-    <v-jumbotron class="image" dark>
+    <v-responsive class="primaryColor" dark>
       <v-container fill-height>
         <v-layout align-center>
           <v-flex text-xs-center>
-            <h1 class="jumboText">MEAL PLANS AND PROGRAMS</h1>
-            <!-- <hr> -->
-            <!-- <v-btn color="green" large>START NOW</v-btn> -->
+            <h1 class="jumboText">SERVICES</h1>
           </v-flex>
         </v-layout>
       </v-container>
-    </v-jumbotron>
+    </v-responsive>
     <v-container>
       <v-layout row wrap>
         <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
@@ -23,28 +21,31 @@
         </v-flex>
       </v-layout>
       <v-layout justify-center row wrap class="singleBlog">
-        <v-flex xs12 sm10 md4 v-for="program in programs" :key="program.id">
-          <v-card class="cardMargin elevation-3" flat color="white lighten-4" hover>
+        <v-flex xs12 sm8 md4 v-for="program in programs" :key="program.id">
+          <v-card class="cardMargin elevation-3" flat color="grey darken-3" hover>
             <v-container fluid>
               <v-layout row>
                 <v-flex xs12 sm md12>
-                  <img class="responsive" src="./../../assets/FIT92.png">
+                  <!-- <img class="responsive" src="./../../assets/FIT92.png"> -->
                   <v-card-title class="justify-center" primary-title>
-                    <h2 class="black--text">{{program.title}}</h2>
+                    <h2 class="white--text">{{program.title}}</h2>
                   </v-card-title>
                   <hr>
                   <!-- <p style="margin-top:20px" align="center">{{program.overview}}</p> -->
                   <v-card-actions class="align">
                     <v-btn
+                      outline
                       v-bind:to="'/programs/'+program.id"
                       style="margin-right: 10px"
-                      color="success"
-                      class="white--text"
+                      color="white"
+                      class="success"
                     >START NOW</v-btn>
                     <v-btn
+                      outline
                       v-if="userIsAuthenticated"
                       @click="remove(program.id)"
-                      class="deleteButton error"
+                      class="error"
+                      color="white"
                     >DELETE</v-btn>
                   </v-card-actions>
                 </v-flex>
@@ -61,16 +62,16 @@ export default {
   data() {
     return {
       // blogs: [],
-      id: '',
-      search: '',
+      id: "",
+      search: ""
     };
   },
   methods: {
     remove(id) {
       console.log(id);
-      this.$store.dispatch('removeProgram', { id });
+      this.$store.dispatch("removeProgram", { id });
       console.log(`${id} Program Removed`);
-    },
+    }
   },
 
   computed: {
@@ -79,11 +80,11 @@ export default {
     },
     userIsAuthenticated() {
       return (
-        this.$store.getters.user !== null
-        && this.$store.getters.user !== undefined
+        this.$store.getters.user !== null &&
+        this.$store.getters.user !== undefined
       );
-    },
-  },
+    }
+  }
 };
 </script>
 <style>
@@ -118,6 +119,7 @@ export default {
 .deleteButton {
   margin: 0 auto;
   margin-left: 250px;
+  /* color: white; */
   /* text-align: right; */
 }
 @media screen and (min-width: 480px) {
@@ -155,6 +157,7 @@ hr {
   margin: auto;
 }
 .jumboText {
+  color: #b7a460;
   font-size: 58px;
 }
 </style>

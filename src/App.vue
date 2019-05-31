@@ -1,5 +1,5 @@
 <template>
-  <v-app class="grey lighten-5">
+  <v-app class="black">
     <v-navigation-drawer fixed temporary app v-model="sideNav" style="width: 250px">
       <v-list>
         <v-list-tile v-for="item in menuItems" :key="item.title" router :to="item.link">
@@ -16,9 +16,9 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="white" class="justify-center" flat app>
+    <v-toolbar color="black" class="justify-center" flat app>
       <v-toolbar-side-icon @click.native.stop="sideNav = !sideNav" class="hidden-sm-and-up"></v-toolbar-side-icon>
-      <v-toolbar-title class="text-uppercase black--text">
+      <v-toolbar-title class="text-uppercase" style="color:#b7a460">
         <v-container>
           <router-link to="/" tag="span" style="cursor: pointer">
             <span class="font-weight-light">FIT</span>
@@ -29,7 +29,8 @@
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
         <v-btn
-          class="text-uppercase black--text"
+          class="text-uppercase"
+          style="color:#b7a460"
           flat
           v-for="item in menuItems"
           :key="item.id"
@@ -40,7 +41,8 @@
           {{item.title}}
         </v-btn>
         <v-btn
-          class="text-uppercase black--text"
+          class="text-uppercase"
+          style="color:#b7a460"
           flat
           v-if="userIsAuthenticated"
           @click="onLogout"
@@ -129,18 +131,16 @@ body {
 html {
   overflow-y: scroll;
 }
-a {
-  color: black;
+
+.v-btn--active:before,
+.v-btn:hover:before,
+.v-btn:focus:before {
+  background-color: black;
+  color: #b7a460;
+  border-radius: 40px;
+  /* size: 20%; */
 }
-a:hover {
-  color: white;
-}
-nav li:hover,
-nav li.router-link-active,
-nav li.router-link-exact-active {
-  color: black;
-  /* cursor: pointer; */
-}
+
 .headings {
   padding-top: 10px;
   text-align: center;

@@ -1,22 +1,197 @@
 <template>
   <div>
-    <div id="left" class="left primaryColor">
-      <img src="https://www.stevecookhealth.com/img/stevebottomsquare.jpg" alt>
+    <!-- <v-responsive class="primaryColor">
+      <v-container fill-height>
+        <v-layout align-center>
+          <v-flex text-xs-center>
+            <h1 class="jumboText">FIT92</h1>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-responsive>-->
+    <v-layout row wrap>
+      <v-flex xs12 sm4 @click="clickMethod(home)">
+        <v-card color="black">
+          <h1 class="image-text">HOME</h1>
+
+          <v-img
+            class="home-image"
+            src="https://st3.depositphotos.com/3383955/19028/i/1600/depositphotos_190280458-stock-photo-sexy-athletic-girl-workout-gym.jpg"
+          ></v-img>
+        </v-card>
+      </v-flex>
+
+      <v-flex xs12 sm4 @click="clickMethod(programs)">
+        <v-card color="black">
+          <h1 class="image-text">SERVICES</h1>
+
+          <v-img
+            class="home-image"
+            src="https://st3.depositphotos.com/3383955/19028/i/1600/depositphotos_190280458-stock-photo-sexy-athletic-girl-workout-gym.jpg"
+          ></v-img>
+          <v-fade-transition>
+            <v-overlay v-if="hover" absolute color="#036358"></v-overlay>
+          </v-fade-transition>
+        </v-card>
+      </v-flex>
+      <v-flex xs12 sm4 @click="clickMethod(about)">
+        <v-card color="black">
+          <h1 class="image-text">ABOUT</h1>
+          <v-img
+            class="home-image"
+            src="https://st3.depositphotos.com/3383955/19028/i/1600/depositphotos_190280458-stock-photo-sexy-athletic-girl-workout-gym.jpg"
+          ></v-img>
+          <v-fade-transition>
+            <v-overlay v-if="hover" absolute color="#036358"></v-overlay>
+          </v-fade-transition>
+        </v-card>
+      </v-flex>
+    </v-layout>
+    <v-layout row>
+      <v-flex xs12 sm12 md12>
+        <div class="video-container">
+          <video autoplay muted loop id="myVideo">
+            <source src="./../assets/workout.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="overlay">
+          <h1>NO GYM? NO PROBLEM</h1>
+        </div>
+      </v-flex>
+    </v-layout>
+
+    <!-- <div id="left" class="left primaryColor">
+      <img src="https://www.essentiallysports.com/wp-content/uploads/2-1.jpg" alt>
     </div>
     <div id="right" class="right primaryColor">
       <h1>WHAT FIT92 OFFERS</h1>
-      <v-btn color="#b7a460">BEGIN NOW</v-btn>
-    </div>
+      <v-btn color="#b7a460" to="/programs">BEGIN NOW</v-btn>
+    </div>-->
   </div>
 </template>
 
 <script>
 export default {
-  data() {}
+  data() {
+    return {
+      home: "/",
+      programs: "/programs",
+      about: "/about"
+    };
+  },
+  methods: {
+    clickMethod(id) {
+      this.$router.push(id);
+    },
+    setOpacity() {
+      console.log("hovered");
+    }
+  }
 };
 </script>
 <style scoped>
-@media screen and (min-width: 701px) {
+video#myVideo {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+.overlay {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+@media screen and (min-width: 1000px) {
+  .overlay h1 {
+    margin-top: 500px;
+    text-align: center;
+    font-size: 6rem;
+    z-index: 1;
+  }
+}
+@media screen and (max-width: 999px) {
+  .overlay h1 {
+    margin-top: 80px;
+    text-align: center;
+    font-size: 3rem;
+    z-index: 1;
+  }
+}
+
+.a-video {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.viedo-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  min-width: 100%;
+}
+.image-text {
+  position: relative;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  /* margin-top: 180px; */
+}
+.home-image,
+.about-image,
+.services-image {
+  width: 100%;
+  height: auto;
+  position: relative;
+  opacity: 0.4;
+  z-index: 1;
+}
+.v-card:hover > .home-image {
+  opacity: 1;
+}
+
+/* .home-image::after,
+.about-image::after,
+.services-image::after {
+  background-image: url("https://st3.depositphotos.com/3383955/19028/i/1600/depositphotos_190280458-stock-photo-sexy-athletic-girl-workout-gym.jpg");
+  background-size: cover;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+} */
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.home-image-message {
+  color: #fff;
+  text-shadow: #343a40 2px 2px;
+  min-width: 100%;
+  min-height: 12em;
+  position: relative;
+}
+
+.home-image-message::before {
+  content: "";
+  display: block;
+  position: absolute;
+  margin-left: 0;
+  min-width: 100%;
+  min-height: 12em;
+  z-index: -1;
+  opacity: 0.4;
+  background-color: #343a40;
+}
+@media screen and (min-width: 1001px) {
   h1 {
     font-size: 48px;
   }
@@ -39,7 +214,7 @@ export default {
     height: 100vh;
   }
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1000px) {
   h1 {
     font-size: 23px;
   }
@@ -67,25 +242,9 @@ export default {
     font-size: 20px;
   }
 }
-
-/* .left {
-  width: 50%;
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  justify-content: center;
-  float: left;
-  height: 100vh;
+h1 {
+  color: white;
 }
-.right {
-  width: 50%;
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  justify-content: center;
-  float: left;
-  height: 100vh;
-} */
 #left > img {
   width: 100%;
   height: auto;
@@ -93,7 +252,6 @@ export default {
 .image {
   background-image: url("https://www.essentiallysports.com/wp-content/uploads/2-1.jpg");
   background-size: cover;
-  /* Sets black overlay on image */
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
 }
 hr {
