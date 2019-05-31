@@ -13,7 +13,6 @@
       <v-flex xs12 sm4 @click="clickMethod(home)">
         <v-card color="black">
           <h1 class="image-text">HOME</h1>
-
           <v-img
             class="home-image"
             src="https://st3.depositphotos.com/3383955/19028/i/1600/depositphotos_190280458-stock-photo-sexy-athletic-girl-workout-gym.jpg"
@@ -29,21 +28,13 @@
             class="home-image"
             src="https://st3.depositphotos.com/3383955/19028/i/1600/depositphotos_190280458-stock-photo-sexy-athletic-girl-workout-gym.jpg"
           ></v-img>
-          <v-fade-transition>
-            <v-overlay v-if="hover" absolute color="#036358"></v-overlay>
-          </v-fade-transition>
         </v-card>
       </v-flex>
       <v-flex xs12 sm4 @click="clickMethod(about)">
         <v-card color="black">
           <h1 class="image-text">ABOUT</h1>
-          <v-img
-            class="home-image"
-            src="https://st3.depositphotos.com/3383955/19028/i/1600/depositphotos_190280458-stock-photo-sexy-athletic-girl-workout-gym.jpg"
-          ></v-img>
-          <v-fade-transition>
-            <v-overlay v-if="hover" absolute color="#036358"></v-overlay>
-          </v-fade-transition>
+          <v-img class="home-image" :src="require('./../assets/jasonwater.png')"></v-img>
+          <!-- <img class="home-image" src="./../assets/jasonwater.png"> -->
         </v-card>
       </v-flex>
     </v-layout>
@@ -92,6 +83,7 @@ export default {
 <style scoped>
 video#myVideo {
   position: absolute;
+  object-fit: scale-down;
   width: 100%;
   height: auto;
 }

@@ -4,13 +4,18 @@
 
     <v-layout justify-center row wrap>
       <v-flex xs12 sm8 v-for="client in clients" :key="client.id">
-        <v-card class="elevation-3 singleBlog" flat>
+        <v-card
+          class="elevation-3 singleBlog"
+          color="grey darken-3"
+          style="outline-style: solid;outline-width: thin;outline-color:#b7a460;border-radius:2px"
+          flat
+        >
           <v-container fluid>
             <v-layout row>
               <v-flex xs12 sm12 md12>
-                <h1 style="text-align:center; color:blue">{{client.title}}</h1>
-                <h1 style="display:inline-block">NAME: {{client.name}}</h1>
-                <h1>EMAIL: {{client.email}}</h1>
+                <h1 style="text-align:center; color:#b7a460">{{client.title}}</h1>
+                <h1 style="display:inline-block; color:white">NAME: {{client.name}}</h1>
+                <h1 style="color:white; letter-spacing:2px">EMAIL: {{client.email}}</h1>
               </v-flex>
             </v-layout>
             <!-- <div v-if="!client.contacted"></div> -->

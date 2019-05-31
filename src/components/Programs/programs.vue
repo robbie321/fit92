@@ -13,32 +13,36 @@
       <v-layout row wrap>
         <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
           <v-btn
+            outline
             left
             v-if="userIsAuthenticated"
-            class="primary"
+            color="#b7a460"
             :to="{name: 'programpost'}"
           >New Program</v-btn>
         </v-flex>
       </v-layout>
       <v-layout justify-center row wrap class="singleBlog">
-        <v-flex xs12 sm8 md4 v-for="program in programs" :key="program.id">
-          <v-card class="cardMargin elevation-3" flat color="grey darken-3" hover>
+        <v-flex xs12 sm7 md4 v-for="program in programs" :key="program.id">
+          <v-card
+            class="cardMargin elevation-3"
+            flat
+            color="grey darken-3"
+            style="outline-style: solid;outline-width: thin;outline-color:#b7a460;border-radius:2px"
+          >
             <v-container fluid>
               <v-layout row>
                 <v-flex xs12 sm md12>
-                  <!-- <img class="responsive" src="./../../assets/FIT92.png"> -->
+                  <img class="responsive" src="./../../assets/FIT92.png">
                   <v-card-title class="justify-center" primary-title>
                     <h2 class="white--text">{{program.title}}</h2>
                   </v-card-title>
-                  <hr>
                   <!-- <p style="margin-top:20px" align="center">{{program.overview}}</p> -->
                   <v-card-actions class="align">
                     <v-btn
                       outline
                       v-bind:to="'/programs/'+program.id"
                       style="margin-right: 10px"
-                      color="white"
-                      class="success"
+                      color="#b7a460"
                     >START NOW</v-btn>
                     <v-btn
                       outline
@@ -89,7 +93,10 @@ export default {
 </script>
 <style>
 .responsive {
-  /* max-width: 200px; */
+  max-width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
   height: auto;
 }
