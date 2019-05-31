@@ -21,10 +21,10 @@
             <v-container fluid>
               <v-layout row>
                 <v-flex xs12 sm12 md12>
-                  <v-card-title class="align" style="color:#b7a460" primary-title>
+                  <!-- <v-card-title class="align" style="color:#b7a460" primary-title>
                     <h2>{{program.title}}</h2>
-                  </v-card-title>
-                  <hr>
+                  </v-card-title>-->
+                  <hr style="margin-bottom:5px">
 
                   <h2 style="margin-left: 15px; color:white">
                     <span style="color:#b7a460">PRICE:</span>
@@ -138,6 +138,6 @@ hr {
   border: 0;
   height: 1px;
   background: #333;
-  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  background-image: linear-gradient(to right, #b7a460, #333, #b7a460);
 }
 </style>
