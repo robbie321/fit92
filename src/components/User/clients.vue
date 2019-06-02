@@ -4,12 +4,7 @@
 
     <v-layout justify-center row wrap>
       <v-flex xs12 sm8 v-for="client in clients" :key="client.id">
-        <v-card
-          class="elevation-3 singleBlog"
-          color="grey darken-3"
-          style="outline-style: solid;outline-width: thin;outline-color:#b7a460;border-radius:2px"
-          flat
-        >
+        <v-card class="elevation-3 singleBlog cardStyle" color="grey darken-3" flat>
           <v-container fluid>
             <v-layout row>
               <v-flex xs12 sm12 md12>

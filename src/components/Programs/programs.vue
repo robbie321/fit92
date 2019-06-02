@@ -12,23 +12,12 @@
     <v-container>
       <v-layout row wrap>
         <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
-          <v-btn
-            outline
-            left
-            v-if="userIsAuthenticated"
-            color="#b7a460"
-            :to="{name: 'programpost'}"
-          >New Program</v-btn>
+          <v-btn outline left v-if="userIsAuthenticated" :to="{name: 'programpost'}">New Program</v-btn>
         </v-flex>
       </v-layout>
       <v-layout justify-center row wrap class="singleBlog">
         <v-flex xs12 sm7 md4 v-for="program in programs" :key="program.id">
-          <v-card
-            class="cardMargin elevation-3"
-            flat
-            color="grey darken-3"
-            style="outline-style: solid;outline-width: thin;outline-color:#b7a460;border-radius:2px"
-          >
+          <v-card class="cardMargin elevation-3 cardStyle" flat color="grey darken-3">
             <v-container fluid>
               <v-layout row>
                 <v-flex xs12 sm md12>
@@ -42,7 +31,6 @@
                       outline
                       v-bind:to="'/programs/'+program.id"
                       style="margin-right: 10px"
-                      color="#b7a460"
                     >START NOW</v-btn>
                     <v-btn
                       outline
@@ -108,13 +96,11 @@ export default {
   .cardMargin {
     margin-bottom: 20px;
     margin-right: 20px;
-    border-radius: 20px;
   }
 }
 @media screen and (max-width: 700px) {
   .cardMargin {
     margin-bottom: 10px;
-    border-radius: 20px;
   }
 }
 .singleBlog {

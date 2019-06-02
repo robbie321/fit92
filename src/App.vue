@@ -1,11 +1,14 @@
 <template>
   <v-app class="black">
-    <v-navigation-drawer fixed temporary app v-model="sideNav" style="width: 250px; ">
+    <v-navigation-drawer fixed temporary app v-model="sideNav" style="width: 250px;" class="black">
       <v-list>
-        <v-list-tile v-for="item in menuItems" :key="item.title" router :to="item.link">
-          <v-list-tile-action>
-            <v-icon>{{item.icon}}</v-icon>
-          </v-list-tile-action>
+        <v-list-tile
+          v-for="item in menuItems"
+          :key="item.title"
+          router
+          :to="item.link"
+          style="color:#b7a460;"
+        >
           <v-list-tile-content>{{item.title}}</v-list-tile-content>
         </v-list-tile>
         <v-list-tile v-if="userIsAuthenticated" @click="onLogout">
@@ -129,6 +132,7 @@ body {
 }
 /*stops page shifting to left when scroll bar appears*/
 html {
+  overflow: hidden;
   overflow-y: scroll;
 }
 .v-btn .v-btn__content .v-icon {
@@ -160,6 +164,17 @@ p {
   font-family: "Oswald", sans-serif;
   font-size: 20px;
   color: rgb(168, 168, 168);
+}
+
+.cardStyle {
+  background-color: dimgrey;
+  /* color: white; */
+  outline-style: solid;
+  outline-width: thin;
+  outline-color: #b7a460;
+}
+.theme--light .v-btn {
+  color: #b7a460;
 }
 /*  */
 </style>

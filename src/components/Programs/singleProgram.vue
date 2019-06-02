@@ -12,12 +12,7 @@
     <v-container>
       <v-layout id="singleBlog" align-center justify-center row wrap>
         <v-flex justify-center xs12 sm10 md12>
-          <v-card
-            flat
-            class="homeCard"
-            color="grey darken-3"
-            style="outline-style: solid;outline-width: thin;outline-color:#b7a460;border-radius:2px"
-          >
+          <v-card flat class="homeCard cardStyle" color="grey darken-3">
             <v-container fluid>
               <v-layout row>
                 <v-flex xs12 sm12 md12>

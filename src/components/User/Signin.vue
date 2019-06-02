@@ -6,11 +6,7 @@
   </v-layout>-->
   <v-layout align-center justify-center>
     <v-flex xs12 sm6>
-      <v-card
-        flat
-        color="grey darken-3"
-        style="outline-style: solid;outline-width: thin;outline-color:#b7a460;border-radius:2px"
-      >
+      <v-card flat color="grey darken-3" class="cardStyle">
         <v-card-text>
           <v-container>
             <form @submit.prevent="OnSignIn">
@@ -45,7 +41,7 @@
                   ></v-text-field>
                 </v-flex>
                 <v-card-actions>
-                  <v-btn fab small round block class="success" type="submit" :loading="load">Sign In</v-btn>
+                  <v-btn fab small round block color="#b7a460" type="submit" :loading="load">Sign In</v-btn>
                 </v-card-actions>
               </v-layout>
             </form>
