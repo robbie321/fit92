@@ -1,6 +1,6 @@
 <template>
   <v-app class="black">
-    <v-navigation-drawer fixed temporary app v-model="sideNav" style="width: 250px">
+    <v-navigation-drawer fixed temporary app v-model="sideNav" style="width: 250px; ">
       <v-list>
         <v-list-tile v-for="item in menuItems" :key="item.title" router :to="item.link">
           <v-list-tile-action>
@@ -131,7 +131,9 @@ body {
 html {
   overflow-y: scroll;
 }
-
+.v-btn .v-btn__content .v-icon {
+  color: #b7a460;
+}
 .v-btn--active:before,
 .v-btn:hover:before,
 .v-btn:focus:before {
