@@ -14,12 +14,16 @@
               </v-flex>
             </v-layout>
             <!-- <div v-if="!client.contacted"></div> -->
-            <v-switch
-              v-model.lazy="client.contacted"
-              @change="markedDone(client.contacted, client.id)"
-              :label="`Contacted Client: ${client.contacted.toString()}`"
-              color="success"
-            ></v-switch>
+            <div>
+              <v-switch
+                style="display:inline-block"
+                v-model.lazy="client.contacted"
+                @change="markedDone(client.contacted, client.id)"
+                :label="`Contacted Client: ${client.contacted.toString()}`"
+                color="success"
+              ></v-switch>
+              <v-btn outline style="float:right">MESSAGE</v-btn>
+            </div>
           </v-container>
         </v-card>
       </v-flex>

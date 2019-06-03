@@ -13,10 +13,7 @@
       <v-flex xs12 sm4 @click="clickMethod(home)">
         <v-card color="black">
           <h1 class="image-text">HOME</h1>
-          <v-img
-            class="home-image"
-            src="https://st3.depositphotos.com/3383955/19028/i/1600/depositphotos_190280458-stock-photo-sexy-athletic-girl-workout-gym.jpg"
-          ></v-img>
+          <v-img class="home-image" :src="require('./../assets/jasonbeach.png')"></v-img>
         </v-card>
       </v-flex>
 
@@ -24,10 +21,7 @@
         <v-card color="black">
           <h1 class="image-text">SERVICES</h1>
 
-          <v-img
-            class="home-image"
-            src="https://st3.depositphotos.com/3383955/19028/i/1600/depositphotos_190280458-stock-photo-sexy-athletic-girl-workout-gym.jpg"
-          ></v-img>
+          <v-img class="home-image" :src="require('./../assets/jasongym.png')"></v-img>
         </v-card>
       </v-flex>
       <v-flex xs12 sm4 @click="clickMethod(about)">
@@ -129,33 +123,15 @@ video#myVideo {
   text-align: center;
   /* margin-top: 180px; */
 }
-.home-image,
-.about-image,
-.services-image {
-  width: 100%;
+.home-image {
+  max-width: 100%;
   height: auto;
   position: relative;
   opacity: 0.4;
-  z-index: 1;
 }
 .v-card:hover > .home-image {
   opacity: 1;
 }
-
-/* .home-image::after,
-.about-image::after,
-.services-image::after {
-  background-image: url("https://st3.depositphotos.com/3383955/19028/i/1600/depositphotos_190280458-stock-photo-sexy-athletic-girl-workout-gym.jpg");
-  background-size: cover;
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 1;
-} */
 
 .flex-center {
   display: flex;
@@ -164,25 +140,6 @@ video#myVideo {
   align-content: center;
 }
 
-.home-image-message {
-  color: #fff;
-  text-shadow: #343a40 2px 2px;
-  min-width: 100%;
-  min-height: 12em;
-  position: relative;
-}
-
-.home-image-message::before {
-  content: "";
-  display: block;
-  position: absolute;
-  margin-left: 0;
-  min-width: 100%;
-  min-height: 12em;
-  z-index: -1;
-  opacity: 0.4;
-  background-color: #343a40;
-}
 @media screen and (min-width: 1001px) {
   h1 {
     font-size: 48px;

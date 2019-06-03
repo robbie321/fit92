@@ -1,8 +1,9 @@
 <template>
   <div>
     <div id="paypal-button-container"></div>
-    <div v-if="success" class="alert alert-success">
-      <strong>Success!</strong> Payment successfuly done
+    <div v-if="success" style="color:white" class="alert alert-success">
+      <strong style="color:green">Success!</strong>
+      Check your email for a receipt
     </div>
     <div v-if="error" class="alert alert-danger">
       <strong>Ooops!</strong> something went wrong
@@ -27,9 +28,13 @@ export default {
       return new Promise((resolve, reject) => {
         console.log(creds);
         axios
-          .post("https://afternoon-citadel-39632.herokuapp.com/checkoutpaypal", creds, {
-            crossdomain: true
-          })
+          .post(
+            "https://afternoon-citadel-39632.herokuapp.com/checkoutpaypal",
+            creds,
+            {
+              crossdomain: true
+            }
+          )
           .then(
             res => resolve()
             // return axios.post("http://localhost:1337/ipn");
