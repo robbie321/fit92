@@ -29,10 +29,20 @@
                   required
                 >
                 <br>
-                <input class="cardStyle" type="text" v-model.lazy="program.content[1]" required>
+                <div id="example-3" style="display:flex">
+                  <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+                  <label for="jack">One on One</label>
+                  <input type="checkbox" id="john" value="John" v-model="checkedNames">
+                  <label for="john">24/7 Instant Messaging</label>
+                  <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+                  <label for="mike">Personalised Workouts</label>
+                  <br>
+                  <span>Checked Services: {{ checkedNames }}</span>
+                </div>
+                <!-- <input class="cardStyle" type="text" v-model.lazy="program.content[1]" required>
                 <br>
                 <input class="cardStyle" type="text" v-model.lazy="program.content[2]" required>
-                <br>
+                <br>-->
               </div>
               <input class="cardStyle" type="hidden" value="1" id="total_chq">
 
@@ -67,6 +77,7 @@
 export default {
   data() {
     return {
+      checkedNames: [],
       program: {
         title: "",
         image: "",
