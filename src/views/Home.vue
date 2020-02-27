@@ -36,7 +36,7 @@
       <v-flex xs12 sm12 md12>
         <div class="video-container">
           <video autoplay muted loop id="myVideo">
-            <source src="./../assets/workout.mp4" type="video/mp4">
+            <source src="./../assets/workout.mp4" type="video/mp4" />
           </video>
         </div>
         <div class="overlay">
@@ -65,8 +65,8 @@ export default {
     };
   },
   methods: {
-    clickMethod(id) {
-      this.$router.push(id);
+    clickMethod(route) {
+      this.$router.push(route);
     },
     setOpacity() {
       console.log("hovered");

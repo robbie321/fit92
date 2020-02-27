@@ -3,27 +3,36 @@
     <h1 style="text-align:center">MY CLIENTS</h1>
 
     <v-layout justify-center row wrap>
-      <v-flex xs12 sm8 v-for="client in clients" :key="client.id">
-        <v-card class="elevation-3 singleBlog cardStyle" color="grey darken-3" flat>
+      <v-flex xs12 sm6 v-for="client in clients" :key="client.id">
+        <v-card
+          class="elevation-3 singleBlog cardStyle"
+          color="grey darken-3"
+          style="margin: 5px"
+          flat
+        >
           <v-container fluid>
-            <v-layout row>
+            <v-layout row justify-center>
               <v-flex xs12 sm12 md12>
-                <h1 style="text-align:center; color:#b7a460">{{client.title}}</h1>
-                <h1 style="display:inline-block; color:white">NAME: {{client.name}}</h1>
-                <h1 style="color:white; letter-spacing:2px">EMAIL: {{client.email}}</h1>
+                <v-container>
+                  <v-layout class="row">
+                    <v-flex xs12>
+                      <h1 style="text-align: center; color:#b7a460">{{client.name}}</h1>
+                      <hr />
+                      <v-flex class="text-xs-center">
+                        <v-btn outline>manage</v-btn>
+                        <v-btn outline>Remove</v-btn>
+                      </v-flex>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+
+                <!-- <h1 style="text-align: center;color:white">{{client.title}}</h1>
+                <h1
+                  style="text-align:center; color:white; letter-spacing:2px; font-size:1.5em"
+                >{{client.email}}</h1>-->
               </v-flex>
             </v-layout>
             <!-- <div v-if="!client.contacted"></div> -->
-            <div>
-              <v-switch
-                style="display:inline-block"
-                v-model.lazy="client.contacted"
-                @change="markedDone(client.contacted, client.id)"
-                :label="`Contacted Client: ${client.contacted.toString()}`"
-                color="success"
-              ></v-switch>
-              <v-btn outline style="float:right">MESSAGE</v-btn>
-            </div>
           </v-container>
         </v-card>
       </v-flex>
@@ -66,4 +75,16 @@ export default {
 };
 </script>
 <style scoped>
+html {
+  font-size: 2vw;
+}
+h1 {
+  font-size: 2em;
+}
+hr {
+  /* margin-bottom: 5px; */
+  border: 0;
+  height: 1px;
+  background: #b7a460;
+}
 </style>
