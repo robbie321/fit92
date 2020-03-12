@@ -3,10 +3,8 @@ const firebase = require("firebase");
 
 paypal.configure({
   mode: "sandbox", // Sandbox or live
-  client_id:
-    "AWH3neqIoKxHtw_Y4eYsb0QRUcY57TclDF-FVxbqN58SuNdpFmTa2Rh_f24lPmofpHOHT3HmvUbbpW6n",
-  client_secret:
-    "EC1NHXMExnhC44H0eynfgZ37NDBaHPurUHKsGhRX3iXECObh99GnR8k0_fRyjah32aLqA0eG7JQmgqaD"
+  client_id: "AWH3neqIoKxHtw_Y4eYsb0QRUcY57TclDF-FVxbqN58SuNdpFmTa2Rh_f24lPmofpHOHT3HmvUbbpW6n",
+  client_secret: "EC1NHXMExnhC44H0eynfgZ37NDBaHPurUHKsGhRX3iXECObh99GnR8k0_fRyjah32aLqA0eG7JQmgqaD"
 });
 
 require("firebase/auth");
@@ -38,7 +36,9 @@ module.exports = {
         payment.email = paymentLog.payer.payer_info.email;
         payment.first_name = paymentLog.payer.payer_info.first_name;
         payment.last_name = paymentLog.payer.payer_info.last_name;
-        ref.push({ payment });
+        ref.push({
+          payment
+        });
         console.log(payment);
         console.log(JSON.stringify(payment));
         Payment.create(payment).exec((err, result) => {

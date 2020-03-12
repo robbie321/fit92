@@ -1,9 +1,14 @@
 <template>
   <v-container>
-    <h1 style="text-align:center">MY CLIENTS</h1>
-
+    <h1 style="text-align:center; color:white; font-size: 3em;">CLIENT MANAGER</h1>
+    <!-- <v-text-field solo>
+      <v-btn icon @click.native.stop="modalModel=true">
+        <v-icon>search</v-icon>
+      </v-btn>
+    </v-text-field>-->
+    <input type="text" v-model="search" placeholder="Search for clients....." />
     <v-layout justify-center row wrap>
-      <v-flex xs12 sm6 v-for="client in clients" :key="client.id">
+      <v-flex xs12 sm6 v-for="client in filterClients" :key="client.id">
         <v-card
           class="elevation-3 singleBlog cardStyle"
           color="grey darken-3"
@@ -45,7 +50,8 @@ export default {
   data() {
     return {
       show: true,
-      toggled: false
+      toggled: false,
+      search: ""
     };
   },
   methods: {
@@ -70,6 +76,11 @@ export default {
         this.$store.getters.user !== null &&
         this.$store.getters.user !== undefined
       );
+    },
+    filterClients() {
+      return this.clients.filter(client => {
+        return client.name.match(this.search);
+      });
     }
   }
 };

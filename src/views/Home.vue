@@ -11,30 +11,29 @@
     </v-responsive>-->
     <v-layout row wrap>
       <v-flex xs12 sm4 @click="clickMethod(home)">
-        <v-card color="black">
-          <h1 class="image-text">HOME</h1>
+        <h1 class="image-text">HOME</h1>
+        <v-card color="black" class="card">
           <v-img class="home-image" :src="require('./../assets/jasonbeach.png')"></v-img>
         </v-card>
       </v-flex>
 
       <v-flex xs12 sm4 @click="clickMethod(programs)">
-        <v-card color="black">
-          <h1 class="image-text">SERVICES</h1>
-
+        <h1 class="image-text">SERVICES</h1>
+        <v-card color="black" class="card">
           <v-img class="home-image" :src="require('./../assets/jasongym.png')"></v-img>
         </v-card>
       </v-flex>
       <v-flex xs12 sm4 @click="clickMethod(about)">
-        <v-card color="black">
-          <h1 class="image-text">ABOUT</h1>
+        <h1 class="image-text">ABOUT</h1>
+        <v-card color="black" class="card">
           <v-img class="home-image" :src="require('./../assets/jasonwater.png')"></v-img>
           <!-- <img class="home-image" src="./../assets/jasonwater.png"> -->
         </v-card>
       </v-flex>
     </v-layout>
-    <v-layout row>
+    <!-- <v-layout row>
       <v-flex xs12 sm12 md12>
-        <div class="video-container">
+        <div class="video-container card">
           <video autoplay muted loop id="myVideo">
             <source src="./../assets/workout.mp4" type="video/mp4" />
           </video>
@@ -43,7 +42,7 @@
           <h1>NO GYM? NO PROBLEM</h1>
         </div>
       </v-flex>
-    </v-layout>
+    </v-layout>-->
 
     <!-- <div id="left" class="left primaryColor">
       <img src="https://www.essentiallysports.com/wp-content/uploads/2-1.jpg" alt>
@@ -75,6 +74,10 @@ export default {
 };
 </script>
 <style scoped>
+.card {
+  margin: 10px;
+}
+
 video#myVideo {
   position: absolute;
   object-fit: scale-down;
@@ -114,7 +117,7 @@ video#myVideo {
   top: 0;
   left: 0;
 
-  min-width: 100%;
+  min-width: 50%;
 }
 .image-text {
   position: relative;
@@ -127,7 +130,7 @@ video#myVideo {
   max-width: 100%;
   height: auto;
   position: relative;
-  opacity: 0.4;
+  opacity: 0.6;
 }
 .v-card:hover > .home-image {
   opacity: 1;
