@@ -11,7 +11,7 @@
     "axios": "^0.18.1",
     "connect-history-api-fallback": "^1.6.0",
     "ejs": "^2.6.1",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "firebase": "^5.8.6",
     "paypal-rest-sdk": "^1.8.1",
     "vue": "^2.6.6",
